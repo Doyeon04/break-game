@@ -58,15 +58,12 @@ function drawBall() {
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, ball.size, 0, Math.PI * 2, true);
   // arc(x, y, radius, startAngle, endAngle, anticlockwise)
-  // (x, y) 위치에 원점을 두면서, 반지름 r을 가지고,  startAngle 에서 시작하여 endAngle 에서 끝나며 주어진 anticlockwise 방향으로 향하는 (기본값은 시계방향 회전) 호를 그리게 됩니다.
+  // (x, y) 위치에 원점, 반지름 r,  startAngle 에서 시작하여 endAngle 에서 끝나며 주어진 anticlockwise 방향으로 향하는 (기본값은 시계방향 회전) 호
 
   ctx.fillStyle = ball.visible ? "white" : "transparent";
   ctx.fill();
   ctx.closePath();
 }
-
-const colors = ["red", "orange", "yellow", "green", "blue"];
-let randomColor = colors[Math.floor(Math.random() * colors.length)];
 
 function drawBricks() {
   bricks.forEach((column) => {
@@ -91,13 +88,9 @@ function drawPaddle() {
   ctx.fillStyle = paddle.visible ? "white" : "transparent";
 
   ctx.fill();
-  //   ctx.closePath();
 }
 
 function drawScore() {
-  // ctx.font = "20px Arial";
-  // ctx.fillText(`Score: ${score}`, canvas.width - 100, 30);
-
   scoreText.innerHTML = `SCORE: ${score}`;
 }
 
@@ -107,7 +100,6 @@ function draw() {
 
   drawBall();
   drawPaddle();
-  // drawScore();
   drawBricks();
 }
 
@@ -229,7 +221,6 @@ function update() {
 function keyDown(e) {
   if (e.key === "ArrowRight") {
     paddle.dx = paddle.speed;
-    console.log(paddle.dx);
   } else if (e.key === "ArrowLeft") {
     paddle.dx = -paddle.speed;
   }
